@@ -1,2 +1,2 @@
-# Faun
-asfasd
+# FaunoftheBerries
+Small schoolproject game
