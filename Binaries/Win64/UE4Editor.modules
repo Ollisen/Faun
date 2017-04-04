@@ -1,0 +1,9 @@
+{
+	"Changelist" : 3249277,
+	"CompatibleChangelist" : 3195953,
+	"BuildId" : "",
+	"Modules" : 
+	{
+		"Game" : "UE4Editor-Game-3538.dll"
+	}
+}
