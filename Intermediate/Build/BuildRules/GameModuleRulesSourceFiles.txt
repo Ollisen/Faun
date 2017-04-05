@@ -1,0 +1,3 @@
+C:\Users\out_n\Documents\Unreal Projects\Faun\Source\Game\Game.Build.cs
+C:\Users\out_n\Documents\Unreal Projects\Faun\Source\Game.Target.cs
+C:\Users\out_n\Documents\Unreal Projects\Faun\Source\GameEditor.Target.cs
