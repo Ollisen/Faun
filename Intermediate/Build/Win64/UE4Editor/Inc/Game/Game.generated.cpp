@@ -10,6 +10,10 @@
 #include "Game.generated.dep.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCode1Game() {}
+	void Afaun::StaticRegisterNativesAfaun()
+	{
+	}
+	IMPLEMENT_CLASS(Afaun, 2617104984);
 	void AFaunChar::StaticRegisterNativesAFaunChar()
 	{
 	}
@@ -33,6 +37,7 @@ void EmptyLinkFunctionForGeneratedCode1Game() {}
 	IMPLEMENT_CLASS(AMyFaun, 231686328);
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
+	ENGINE_API class UClass* Z_Construct_UClass_AActor();
 	ENGINE_API class UClass* Z_Construct_UClass_ACharacter();
 	ENGINE_API class UClass* Z_Construct_UClass_AGameModeBase();
 	ENGINE_API class UClass* Z_Construct_UClass_APawn();
@@ -46,9 +51,10 @@ void EmptyLinkFunctionForGeneratedCode1Game() {}
 	ENGINE_API class UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 	ENGINE_API class UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_AActor_NoRegister();
-	ENGINE_API class UClass* Z_Construct_UClass_AActor();
 	ENGINE_API class UClass* Z_Construct_UClass_UProjectileMovementComponent_NoRegister();
 
+	GAME_API class UClass* Z_Construct_UClass_Afaun_NoRegister();
+	GAME_API class UClass* Z_Construct_UClass_Afaun();
 	GAME_API class UClass* Z_Construct_UClass_AFaunChar_NoRegister();
 	GAME_API class UClass* Z_Construct_UClass_AFaunChar();
 	GAME_API class UClass* Z_Construct_UClass_AGameGameMode_NoRegister();
@@ -61,6 +67,37 @@ void EmptyLinkFunctionForGeneratedCode1Game() {}
 	GAME_API class UClass* Z_Construct_UClass_AMyFaun_NoRegister();
 	GAME_API class UClass* Z_Construct_UClass_AMyFaun();
 	GAME_API class UPackage* Z_Construct_UPackage__Script_Game();
+	UClass* Z_Construct_UClass_Afaun_NoRegister()
+	{
+		return Afaun::StaticClass();
+	}
+	UClass* Z_Construct_UClass_Afaun()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_AActor();
+			Z_Construct_UPackage__Script_Game();
+			OuterClass = Afaun::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("faun.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("faun.h"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_Afaun(Z_Construct_UClass_Afaun, &Afaun::StaticClass, TEXT("Afaun"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(Afaun);
 	UClass* Z_Construct_UClass_AFaunChar_NoRegister()
 	{
 		return AFaunChar::StaticClass();
@@ -327,8 +364,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/Game")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x97C6192A;
-			Guid.B = 0x11947D87;
+			Guid.A = 0x7290CC5C;
+			Guid.B = 0x6F26D096;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

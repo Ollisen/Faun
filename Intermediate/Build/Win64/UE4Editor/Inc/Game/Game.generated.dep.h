@@ -5,6 +5,9 @@
 	DO NOT modify this manually! Edit the corresponding .h files instead!
 ===========================================================================*/
 
+#ifndef GAME_faun_generated_h
+	#include "faun.h"
+#endif
 #ifndef GAME_FaunChar_generated_h
 	#include "FaunChar.h"
 #endif
