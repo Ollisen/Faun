@@ -15,10 +15,10 @@ AGamePawn::AGamePawn()
 {	
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
 	// Create the mesh component
-	ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
-	RootComponent = ShipMeshComponent;
-	ShipMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
-	ShipMeshComponent->SetStaticMesh(ShipMesh.Object);
+	SkeletalMeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("ShipMesh"));
+	RootComponent = SkeletalMeshComponent;
+	SkeletalMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
+	
 	
 	// Cache our sound effect
 	static ConstructorHelpers::FObjectFinder<USoundBase> FireAudio(TEXT("/Game/TwinStick/Audio/TwinStickFire.TwinStickFire"));
@@ -43,9 +43,9 @@ AGamePawn::AGamePawn()
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->bAbsoluteRotation = true; // Don't want arm to rotate when ship does
 	CameraBoom->TargetArmLength = 1200.f;
-	CameraBoom->RelativeRotation = FRotator(-80.f, 0.f, 0.f);
+	CameraBoom->RelativeRotation = FRotator(-0.f, 50.f, 0.f);
 	CameraBoom->bDoCollisionTest = false; // Don't want to pull camera in when it collides with level
-
+	
 	// Create a camera...
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("TopDownCamera"));
 	CameraComponent->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
@@ -83,6 +83,10 @@ void AGamePawn::BeginPlay()
 
 void AGamePawn::Tick(float DeltaSeconds)
 {
+	
+	health = 10;
+
+
 	// Find movement direction
 	const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
 	const float RightValue = GetInputAxisValue(MoveRightBinding);
