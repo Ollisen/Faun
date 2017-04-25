@@ -5,13 +5,13 @@
 #include "GamePawn.generated.h"
 
 UCLASS(Blueprintable)
-class AGamePawn : public APawn
+class AGamePawn : public ACharacter 
 {
 	GENERATED_BODY()
 
 	/* The mesh component */
 	UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	class UStaticMeshComponent* ShipMeshComponent;
+	class USkeletalMeshComponent* SkeletalMeshComponent;
 
 	/** The camera */
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
@@ -22,7 +22,11 @@ class AGamePawn : public APawn
 	class USpringArmComponent* CameraBoom;
 
 public:
+	
 	AGamePawn();
+
+
+
 
 	/** Offset from the ships location to spawn projectiles */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite )
@@ -65,6 +69,8 @@ public:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	int health;
+
 private:
 	UPROPERTY(EditAnywhere, Category = "Pawn Setup")
 		USceneComponent* OurVisibleComponent;
@@ -81,7 +87,7 @@ private:
 
 public:
 	/** Returns ShipMeshComponent subobject **/
-	FORCEINLINE class UStaticMeshComponent* GetShipMeshComponent() const { return ShipMeshComponent; }
+	FORCEINLINE class USkeletalMeshComponent* GetSkeletalMeshComponent() const { return SkeletalMeshComponent; }
 	/** Returns CameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetCameraComponent() const { return CameraComponent; }
 	/** Returns CameraBoom subobject **/
